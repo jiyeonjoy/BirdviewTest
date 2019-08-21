@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.jiyeonchoi.birdviewtest.R;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityHobbyListBinding;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityMainBinding;
 
@@ -33,6 +34,14 @@ public class HobbyListActivity extends AppCompatActivity {
         /*데이터 수신*/
         Intent intent = getIntent();
         peopleCount = intent.getExtras().getInt("peopleCount", 0);
+
+        if (peopleCount == 100) {
+            binding.peopleCount.setText(R.string.p100);
+        } else if (peopleCount == 10000) {
+            binding.peopleCount.setText(R.string.p10000);
+        } else {
+            binding.peopleCount.setText(R.string.p500000);
+        }
 
 
 

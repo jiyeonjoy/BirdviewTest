@@ -5,15 +5,10 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.jiyeonchoi.birdviewtest.HobbyListActivity;
+import com.jiyeonchoi.birdviewtest.R;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityMainBinding;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 

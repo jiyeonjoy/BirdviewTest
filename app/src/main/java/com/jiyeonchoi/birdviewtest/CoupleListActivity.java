@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 
+import com.jiyeonchoi.birdviewtest.R;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityCoupleListBinding;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityMainBinding;
 
