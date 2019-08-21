@@ -6,5 +6,7 @@
     <string name="p500000">500000명</string>
 
     <string name="mainText">인원을 선택 하세요!</string>
+    <string name="hobbyListTitle">일치하는 취미 리스트</string>
+    <string name="coupleListTitle">매칭 커플 리스트</string>
 
 </resources>

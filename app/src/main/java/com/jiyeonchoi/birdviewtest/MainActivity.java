@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goHobbyListIntent(int peopleCount) {
         Intent go_hobby_list = new Intent(getApplication().getApplicationContext(), MainActivity.class);
-        // 인텐트 값 넘기기
+        go_hobby_list.putExtra("peopleCount", peopleCount);
         startActivity(go_hobby_list);
         finish();
     }
