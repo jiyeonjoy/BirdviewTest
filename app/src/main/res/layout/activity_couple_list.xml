@@ -29,7 +29,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/coupleListRc"/>
 
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/coupleListRc"
             android:layout_width="match_parent"

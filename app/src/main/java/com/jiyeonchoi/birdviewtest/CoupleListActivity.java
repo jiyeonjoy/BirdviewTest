@@ -20,5 +20,6 @@ public class CoupleListActivity extends AppCompatActivity {
         binding.setCoupleList(this);
 
 
-    }
+    }   // onCreate 끝
+
 }

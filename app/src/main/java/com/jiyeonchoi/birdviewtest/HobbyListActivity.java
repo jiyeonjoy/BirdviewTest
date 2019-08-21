@@ -28,7 +28,9 @@ public class HobbyListActivity extends AppCompatActivity {
         /*데이터 수신*/
         Intent intent = getIntent();
         peopleCount = intent.getExtras().getInt("peopleCount", 0);
-    }
+
+    }   // onCreate 끝
+
 
     private String readTxt() {
         String data = null;
