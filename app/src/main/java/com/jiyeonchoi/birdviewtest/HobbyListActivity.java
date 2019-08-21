@@ -26,7 +26,9 @@ public class HobbyListActivity extends AppCompatActivity {
 
     int peopleCount;
 
-    ArrayList<String> arraylist;
+    ArrayList<String> coupleList;
+
+    InputStream inputStream;
 
     /* RecyclerView */
     HobbyListRCAdapter hobbyListRCAdapter;
@@ -63,29 +65,50 @@ public class HobbyListActivity extends AppCompatActivity {
         /* 파일 읽기 */
         readTxt();
 
+
+
+
+
+
+
+
+
+
+
         /* test 잘불러와지나 확인!! */
         hobbyRCSave();
-
-
 
     }   // onCreate 끝
 
 
+
+
+
     /* 파일 읽기 */
     private void readTxt() {
-        InputStream inputStream = getResources().openRawResource(R.raw.test);
-        arraylist = new ArrayList();
+        if (peopleCount == 100) {
+            inputStream = getResources().openRawResource(R.raw.t100);
+        } else if (peopleCount == 10000) {
+            inputStream = getResources().openRawResource(R.raw.t10000);
+        } else {
+            inputStream = getResources().openRawResource(R.raw.t500000);
+        }
+
+        coupleList = new ArrayList();
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "EUC_KR"));
-
+            boolean a = false;                                                                       // 파일 첫번째 라인 제거 하기 위한 변수
             while (true) {
                 String string = bufferedReader.readLine();
-                if (string != null) {
-                    arraylist.add(string);
-                } else {
-                    break;
+                if (a) {
+                    if (string != null) {
+                        coupleList.add(string);
+                    } else {
+                        break;
+                    }
                 }
+                a = true;
             }
 
         } catch (IOException e) {
@@ -96,31 +119,33 @@ public class HobbyListActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // 로그찍기 성공!!! 감동!!!!
     private void hobbyRCSave() {
-        for (int counter = 0; counter < arraylist.size(); counter++) {
-            System.out.println(arraylist.get(counter));
-            Log.d("eeeeeeeeeeeeee", arraylist.get(counter));
+        if(peopleCount == 100 | peopleCount == 10000) {
+            for (int counter = 0; counter < coupleList.size(); counter++) {
+                //System.out.println(coupleList.get(counter));
+                //Log.d("eeeeeeeeeeeeee", coupleList.get(counter));
 
-            hobbyArray.add(new HobbyListItem(arraylist.get(counter)));
-            hobbyListRCAdapter.notifyDataSetChanged();
+                hobbyArray.add(new HobbyListItem(coupleList.get(counter)));
+                hobbyListRCAdapter.notifyDataSetChanged();
+        }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -147,18 +172,6 @@ public class HobbyListActivity extends AppCompatActivity {
 //        }
 //        return data;
 //    }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
