@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.jiyeonchoi.birdviewtest.databinding.ActivityHobbyListBinding;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityMainBinding;
@@ -25,13 +26,21 @@ public class HobbyListActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hobby_list);
         binding.setHobbyList(this);
 
+        /* 툴바 수정 */
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);                                       // 뒤로가기 버튼 세팅
+        getSupportActionBar().setTitle(R.string.hobbyListTitle);                                     // 툴바 이름 세팅
+
         /*데이터 수신*/
         Intent intent = getIntent();
         peopleCount = intent.getExtras().getInt("peopleCount", 0);
 
+
+
     }   // onCreate 끝
 
 
+
+    /* 파일 읽기 */
     private String readTxt() {
         String data = null;
         InputStream inputStream = getResources().openRawResource(R.raw.t100);
@@ -51,5 +60,19 @@ public class HobbyListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return data;
+    }
+
+
+
+    /* 뒤로가기 버튼 */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{                                                                 // toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

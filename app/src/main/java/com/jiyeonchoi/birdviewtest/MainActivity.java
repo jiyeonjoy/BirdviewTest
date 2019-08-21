@@ -34,11 +34,12 @@ public class MainActivity extends AppCompatActivity {
     }   // onCreate 끝
 
 
+    /* 매칭되는 취미 리스트로 이동 */
     public void goHobbyListIntent(int peopleCount) {
-        Intent go_hobby_list = new Intent(getApplication().getApplicationContext(), MainActivity.class);
+        Intent go_hobby_list = new Intent(getApplication().getApplicationContext(), HobbyListActivity.class);
         go_hobby_list.putExtra("peopleCount", peopleCount);
         startActivity(go_hobby_list);
-        finish();
+
     }
 
 }
