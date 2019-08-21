@@ -1,6 +1,5 @@
 package com.jiyeonchoi.birdviewtest.Adapter;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +13,10 @@ import java.util.ArrayList;
 public class CoupleListRCAdabter extends RecyclerView.Adapter<CoupleListRCAdabter.ViewHolder> {
     Context context;
     ArrayList<CoupleListItem> items;
-    int item_layout;
 
-    public CoupleListRCAdabter(Context context, ArrayList<CoupleListItem> items, int item_layout) {
+    public CoupleListRCAdabter(Context context, ArrayList<CoupleListItem> items) {
         this.context = context;
         this.items = items;
-        this.item_layout=item_layout;
     }
 
     public void itemclear() {

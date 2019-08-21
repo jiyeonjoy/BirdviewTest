@@ -13,12 +13,10 @@ import java.util.ArrayList;
 public class HobbyListRCAdapter extends RecyclerView.Adapter<HobbyListRCAdapter.ViewHolder> {
     Context context;
     ArrayList<HobbyListItem> items;
-    int item_layout;
 
-    public HobbyListRCAdapter(Context context, ArrayList<HobbyListItem> items, int item_layout) {
+    public HobbyListRCAdapter(Context context, ArrayList<HobbyListItem> items) {
         this.context = context;
         this.items = items;
-        this.item_layout=item_layout;
     }
 
     public void itemclear() {

@@ -2,24 +2,38 @@ package com.jiyeonchoi.birdviewtest;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.jiyeonchoi.birdviewtest.Adapter.HobbyListRCAdapter;
+import com.jiyeonchoi.birdviewtest.ListItem.HobbyListItem;
 import com.jiyeonchoi.birdviewtest.R;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityHobbyListBinding;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityMainBinding;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.Socket;
+import java.util.ArrayList;
 
 public class HobbyListActivity extends AppCompatActivity {
 
     private ActivityHobbyListBinding binding;
 
     int peopleCount;
+
+    private RecyclerView.Adapter adapter;
+    ArrayList<HobbyListItem> items = new ArrayList<>();
+    RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +58,7 @@ public class HobbyListActivity extends AppCompatActivity {
         }
 
 
-
     }   // onCreate 끝
-
 
 
     /* 파일 읽기 */
@@ -71,7 +83,15 @@ public class HobbyListActivity extends AppCompatActivity {
         return data;
     }
 
+    /* 리사이클러뷰 어댑터 설정 */
+    private void setRecyclerView(){
 
+        mRecyclerView.setHasFixedSize(true);
+        adapter = new HobbyListRCAdapter(getApplicationContext(), items);
+        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    }
 
     /* 뒤로가기 버튼 */
     @Override
