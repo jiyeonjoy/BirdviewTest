@@ -41,7 +41,11 @@ public class HobbyListRCAdapter extends RecyclerView.Adapter<HobbyListRCAdapter.
 
     @Override
     public int getItemCount() {
-        return items.size();
+        if(items!=null){
+            return items.size();
+        } else{
+            return 0;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

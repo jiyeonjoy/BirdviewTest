@@ -6,23 +6,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.jiyeonchoi.birdviewtest.Adapter.HobbyListRCAdapter;
 import com.jiyeonchoi.birdviewtest.ListItem.HobbyListItem;
-import com.jiyeonchoi.birdviewtest.R;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityHobbyListBinding;
-import com.jiyeonchoi.birdviewtest.databinding.ActivityMainBinding;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.Socket;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class HobbyListActivity extends AppCompatActivity {
@@ -31,9 +26,11 @@ public class HobbyListActivity extends AppCompatActivity {
 
     int peopleCount;
 
-    private RecyclerView.Adapter adapter;
-    ArrayList<HobbyListItem> items = new ArrayList<>();
-    RecyclerView mRecyclerView;
+    ArrayList<String> arraylist;
+
+    /* RecyclerView */
+    HobbyListRCAdapter hobbyListRCAdapter;
+    ArrayList<HobbyListItem> hobbyArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,41 +54,113 @@ public class HobbyListActivity extends AppCompatActivity {
             binding.peopleCount.setText(R.string.p500000);
         }
 
+        /* RecyclerView */
+        hobbyListRCAdapter = new HobbyListRCAdapter(this, hobbyArray);
+        binding.hobbyListRc.setAdapter(hobbyListRCAdapter);
+        binding.hobbyListRc.setLayoutManager(new LinearLayoutManager(this));
+
+
+        /* 파일 읽기 */
+        readTxt();
+
+        /* test 잘불러와지나 확인!! */
+        hobbyRCSave();
+
+
 
     }   // onCreate 끝
 
 
     /* 파일 읽기 */
-    private String readTxt() {
-        String data = null;
-        InputStream inputStream = getResources().openRawResource(R.raw.t100);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    private void readTxt() {
+        InputStream inputStream = getResources().openRawResource(R.raw.test);
+        arraylist = new ArrayList();
 
-        int i;
         try {
-            i = inputStream.read();
-            while (i != -1) {
-                byteArrayOutputStream.write(i);
-                i = inputStream.read();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "EUC_KR"));
+
+            while (true) {
+                String string = bufferedReader.readLine();
+                if (string != null) {
+                    arraylist.add(string);
+                } else {
+                    break;
+                }
             }
 
-            data = new String(byteArrayOutputStream.toByteArray(),"MS949");
-            inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return data;
     }
 
-    /* 리사이클러뷰 어댑터 설정 */
-    private void setRecyclerView(){
 
-        mRecyclerView.setHasFixedSize(true);
-        adapter = new HobbyListRCAdapter(getApplicationContext(), items);
-        mRecyclerView.setAdapter(adapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+    // 로그찍기 성공!!! 감동!!!!
+    private void hobbyRCSave() {
+        for (int counter = 0; counter < arraylist.size(); counter++) {
+            System.out.println(arraylist.get(counter));
+            Log.d("eeeeeeeeeeeeee", arraylist.get(counter));
+
+            hobbyArray.add(new HobbyListItem(arraylist.get(counter)));
+            hobbyListRCAdapter.notifyDataSetChanged();
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    /* 파일 읽기 */
+//    private String readTxt() {
+//        String data = null;
+//        InputStream inputStream = getResources().openRawResource(R.raw.test);
+//
+//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//
+//        int i;
+//        try {
+//            i = inputStream.read();
+//            while (i != -1) {
+//                byteArrayOutputStream.write(i);
+//                i = inputStream.read();
+//            }
+//
+//            data = new String(byteArrayOutputStream.toByteArray(),"MS949");
+//            inputStream.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return data;
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /* 뒤로가기 버튼 */
     @Override
