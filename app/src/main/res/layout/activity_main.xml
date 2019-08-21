@@ -3,76 +3,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/SecondColor">
+    <data>
+        <variable
+            name="main"
+            type="com.jiyeonchoi.birdviewtest.MainActivity" />
+    </data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="인원을 선택 하세요!"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/ThirdColor"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/text10000"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="@color/SecondColor">
 
-    <TextView
-        android:id="@+id/text100"
-        android:layout_width="0sp"
-        android:layout_height="40sp"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="100명"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/SecondColor"
-        android:background="@drawable/btn_circle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/text10000"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mainText"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/ThirdColor"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/text10000"/>
+
+        <TextView
+            android:id="@+id/text100"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:gravity="center"
+            app:layout_constraintVertical_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/p100"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/SecondColor"
+            android:background="@drawable/btn_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/text10000"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
-    <TextView
-        android:id="@+id/text10000"
-        android:layout_width="0sp"
-        android:layout_height="40sp"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="1"
-        android:text="10000명"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/SecondColor"
-        android:background="@drawable/btn_circle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/text500000"
-        app:layout_constraintLeft_toRightOf="@+id/text100"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/text10000"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:gravity="center"
+            app:layout_constraintVertical_weight="1"
+            android:text="@string/p10000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/SecondColor"
+            android:background="@drawable/btn_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/text500000"
+            app:layout_constraintLeft_toRightOf="@+id/text100"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        android:id="@+id/text500000"
-        android:layout_width="0sp"
-        android:layout_height="40sp"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="500000명"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/SecondColor"
-        android:background="@drawable/btn_circle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/text10000"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/text500000"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:gravity="center"
+            app:layout_constraintVertical_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/p500000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/SecondColor"
+            android:background="@drawable/btn_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/text10000"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">BirdviewTest</string>
+
+    <string name="p100">100명</string>
+    <string name="p10000">10000명</string>
+    <string name="p500000">500000명</string>
+
+    <string name="mainText">인원을 선택 하세요!</string>
+
 </resources>
