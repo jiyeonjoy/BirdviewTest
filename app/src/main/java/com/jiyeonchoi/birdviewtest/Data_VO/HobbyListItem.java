@@ -1,4 +1,4 @@
-package com.jiyeonchoi.birdviewtest.ListItem;
+package com.jiyeonchoi.birdviewtest.Data_VO;
 
 public class HobbyListItem {
 

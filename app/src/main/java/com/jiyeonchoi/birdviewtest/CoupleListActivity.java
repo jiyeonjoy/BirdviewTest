@@ -3,32 +3,30 @@ package com.jiyeonchoi.birdviewtest;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toolbar;
 
 import com.jiyeonchoi.birdviewtest.Adapter.CoupleListRCAdabter;
-import com.jiyeonchoi.birdviewtest.Adapter.HobbyListRCAdapter;
-import com.jiyeonchoi.birdviewtest.ListItem.CoupleListItem;
-import com.jiyeonchoi.birdviewtest.ListItem.HobbyListItem;
-import com.jiyeonchoi.birdviewtest.R;
+import com.jiyeonchoi.birdviewtest.Data_VO.CoupleListItem;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityCoupleListBinding;
-import com.jiyeonchoi.birdviewtest.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 
 public class CoupleListActivity extends AppCompatActivity {
 
+    /* 데이터바인딩 */
     private ActivityCoupleListBinding binding;
 
+
+    /* 데이터 파일 사람 수 */
     int peopleCount;
 
-    private RecyclerView.Adapter adapter;
-    ArrayList<CoupleListItem> items = new ArrayList<>();
-    RecyclerView mRecyclerView;
+    /* RecyclerView */
+    CoupleListRCAdabter coupleListRCAdabter;
+    ArrayList<CoupleListItem> coupleArray = new ArrayList<>();
+
 
 
     @Override
@@ -54,19 +52,35 @@ public class CoupleListActivity extends AppCompatActivity {
             binding.peopleCount.setText(R.string.p500000);
         }
 
+        /* RecyclerView */
+        coupleListRCAdabter = new CoupleListRCAdabter(this, coupleArray);
+        binding.coupleListRc.setAdapter(coupleListRCAdabter);
+        binding.coupleListRc.setLayoutManager(new LinearLayoutManager(this));
+
+
+
 
 
     }   // onCreate 끝
 
-    /* 리사이클러뷰 어댑터 설정 */
-    private void setRecyclerView(){
 
-        mRecyclerView.setHasFixedSize(true);
-        adapter = new CoupleListRCAdabter(getApplicationContext(), items);
-        mRecyclerView.setAdapter(adapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /* 뒤로가기 버튼 */
     @Override
