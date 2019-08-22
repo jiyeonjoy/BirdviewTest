@@ -14,18 +14,18 @@ public class DataArray {
     public static ArrayList<Integer> t100coupleList = new ArrayList<>();                             // t100 매칭 커플 1번 목록
     public static ArrayList<Integer> t100coupleList2 = new ArrayList<>();                            // t100 매칭 커플 2번 목록
     public static ArrayList<String> t100hobbyList = new ArrayList<>();                               // t100 매칭 취미 목록
-    public static ArrayList<String> t100hobbyList2 = new ArrayList<>();                              // t100 매칭 취미 목록 중복제거
+    public static ArrayList<String> t100hobbyList2 = new ArrayList<>();                              // t100 매칭 취미 목록 중복제거 후 알파벳 순 정렬
 
     public static ArrayList<String> t10000peopleList = new ArrayList<>();                            // t10000 사람 목록
     public static ArrayList<Integer> t10000coupleList = new ArrayList<>();                           // t10000 매칭 커플 1번 목록
     public static ArrayList<Integer> t10000coupleList2 = new ArrayList<>();                          // t10000 매칭 커플 2번 목록
     public static ArrayList<String> t10000hobbyList = new ArrayList<>();                             // t10000 매칭 취미 목록
-    public static ArrayList<String> t10000hobbyList2 = new ArrayList<>();                            // t10000 매칭 취미 목록 중복제거
+    public static ArrayList<String> t10000hobbyList2 = new ArrayList<>();                            // t10000 매칭 취미 목록 중복제거 후 알파벳 순 정렬
 
     public static ArrayList<String> t500000peopleList = new ArrayList<>();                           // t500000 사람 목록
     public static ArrayList<Integer> t500000coupleList = new ArrayList<>();                          // t500000 매칭 커플 1번 목록
     public static ArrayList<Integer> t500000coupleList2 = new ArrayList<>();                         // t500000 매칭 커플 2번 목록
     public static ArrayList<String> t500000hobbyList = new ArrayList<>();                            // t500000 매칭 취미 목록
-    public static ArrayList<String> t500000hobbyList2 = new ArrayList<>();                           // t500000 매칭 취미 목록 중복제거
+    public static ArrayList<String> t500000hobbyList2 = new ArrayList<>();                           // t500000 매칭 취미 목록 중복제거 후 알파벳 순 정렬
 
 }

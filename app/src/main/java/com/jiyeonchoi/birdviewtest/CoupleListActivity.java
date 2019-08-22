@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.jiyeonchoi.birdviewtest.Adapter.CoupleListRCAdabter;
@@ -86,8 +87,11 @@ public class CoupleListActivity extends AppCompatActivity {
 
             for (int i = 0; i< DataArray.t500000hobbyList.size(); i++) {
                 if( DataArray.t500000hobbyList.get(i).equals(hobbyName)) {
+                    Log.d("aaaaaaaaaaaaaaa55", hobbyName);
                     coupleArray.add(new CoupleListItem(DataArray.t500000coupleList.get(i) + " - " + DataArray.t500000coupleList2.get(i),
                             DataArray.t500000peopleList.get(DataArray.t500000coupleList.get(i)-1), DataArray.t500000peopleList.get(DataArray.t500000coupleList2.get(i)-1)));
+                    Log.d("aaaaaaaaaaaaaaa55", DataArray.t500000coupleList.get(i)+"");
+                    Log.d("aaaaaaaaaaaaaaa55", DataArray.t500000coupleList2.get(i)+"");
                 }
             }
             coupleListRCAdabter.notifyDataSetChanged();

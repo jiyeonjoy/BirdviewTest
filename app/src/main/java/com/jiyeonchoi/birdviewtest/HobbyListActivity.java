@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -67,21 +68,21 @@ public class HobbyListActivity extends AppCompatActivity {
 
         /* 파일 읽었는지 확인해서 이미 읽었으면 저장된 값을 불러온다. */
         if (DataArray.peopleCount == 100) {
-            if(!DataArray.t100Read) {
+            if (!DataArray.t100Read) {
                 /* 파일 읽기 */
                 readTxt();
                 /* 취미 비교 */
                 hobbyCompare();
             }
         } else if (DataArray.peopleCount == 10000) {
-            if(!DataArray.t10000Read) {
+            if (!DataArray.t10000Read) {
                 /* 파일 읽기 */
                 readTxt();
                 /* 취미 비교 */
                 hobbyCompare();
             }
         } else {
-            if(!DataArray.t500000Read) {
+            if (!DataArray.t500000Read) {
                 /* 파일 읽기 */
                 readTxt();
                 /* 취미 비교 */
@@ -96,10 +97,7 @@ public class HobbyListActivity extends AppCompatActivity {
         hobbyRCSave();
 
 
-
     }   // onCreate 끝
-
-
 
 
     /* 파일 선택해서 ArrayList 목록 저장 */
@@ -141,20 +139,19 @@ public class HobbyListActivity extends AppCompatActivity {
     }
 
 
-
     /* 취미 비교 */
     private void hobbyCompare() {
 
         int maxMatchCount = 0;                                                                        // 가장 많이 매칭 되는 값
 
         /* 사람 100명일 때 */
-        if(DataArray.peopleCount == 100) {
+        if (DataArray.peopleCount == 100) {
 
-            for(int h = 0; h < 100; h++) {
+            for (int h = 0; h < 100; h++) {
 
                 String standardPerson = DataArray.t100peopleList.get(h).replaceAll(" ", "");             // 첫번째 사람 공백 제거
                 //Log.d("eeeeeeeeeeeeee111", firstPerson);
-                for (int i = 0; i < 100 ; i++) {
+                for (int i = 0; i < 100; i++) {
                     if (h < i) {
                         int matchCount = 0;                                                                      // 매칭 카운트
                         ArrayList<String> matchHobby = new ArrayList<>();                                        // 매칭 취미
@@ -209,8 +206,8 @@ public class HobbyListActivity extends AppCompatActivity {
 
             Collections.sort(DataArray.t100hobbyList);                                                                 // 취미 리스트 알파벳 순으로 정렬
             // 중복제거
-            for (int i = 0; i < DataArray.t100hobbyList.size(); i++ ) {
-                if(!DataArray.t100hobbyList2.contains(DataArray.t100hobbyList.get(i))) {
+            for (int i = 0; i < DataArray.t100hobbyList.size(); i++) {
+                if (!DataArray.t100hobbyList2.contains(DataArray.t100hobbyList.get(i))) {
                     DataArray.t100hobbyList2.add(DataArray.t100hobbyList.get(i));
                 }
             }
@@ -218,21 +215,13 @@ public class HobbyListActivity extends AppCompatActivity {
             DataArray.t100Read = true;
 
 
-
-
-
-
-
-
-
-        }   /* 사람 10000명일 때 */
-        else if (DataArray.peopleCount == 10000) {
+        }   /* 사람 10000명일 때 */ else if (DataArray.peopleCount == 10000) {
 
 
             // 1번째 사람 기준 나중에 기준 모두 for문 돌리고 복사한 peopleList2 하나씩 지우기-ArryaList 인텐트 전송되나?
             String firstPerson = DataArray.t10000peopleList.get(0).replaceAll(" ", "");             // 첫번째 사람 공백 제거
             //Log.d("eeeeeeeeeeeeee111", firstPerson);
-            for (int i = 1; i < DataArray.t10000peopleList.size() ; i++) {
+            for (int i = 1; i < DataArray.t10000peopleList.size(); i++) {
                 int matchCount = 0;                                                                      // 매칭 카운트
                 ArrayList<String> matchHobby = new ArrayList<>();                                        // 매칭 취미
 
@@ -259,100 +248,119 @@ public class HobbyListActivity extends AppCompatActivity {
                     //matchHobby.sort(String::compareToIgnoreCase);
                     Collections.sort(matchHobby);
                     String matchHobbyString = "";
-                    for ( int k = 0; k < matchHobby.size(); k++) {
+                    for (int k = 0; k < matchHobby.size(); k++) {
                         matchHobbyString += matchHobby.get(k);
                     }
                     DataArray.t10000hobbyList.add(matchHobbyString);
                     DataArray.t10000coupleList.add(1);
-                    DataArray.t10000coupleList2.add(i+1);
-                } else if (matchCount == maxMatchCount && matchCount != 0){
+                    DataArray.t10000coupleList2.add(i + 1);
+                } else if (matchCount == maxMatchCount && matchCount != 0) {
                     // 기존의 커플목록, 취미목록에 추가
                     // 알파벳 순으로 매칭 취미 정렬
                     Log.d("eeeeeeeeeeeeee", "기존의 목록 추가");
                     Collections.sort(matchHobby);
                     String matchHobbyString = "";
-                    for ( int k = 0; k < matchHobby.size(); k++) {
+                    for (int k = 0; k < matchHobby.size(); k++) {
                         matchHobbyString += matchHobby.get(k);
                     }
                     DataArray.t10000hobbyList.add(matchHobbyString);
                     DataArray.t10000coupleList.add(1);
-                    DataArray.t10000coupleList2.add(i+1);
+                    DataArray.t10000coupleList2.add(i + 1);
 
                 }
             }
 
             Collections.sort(DataArray.t10000hobbyList);                                                                 // 취미 리스트 알파벳 순으로 정렬
             // 중복제거
-            for (int i = 0; i < DataArray.t10000hobbyList.size(); i++ ) {
-                if(!DataArray.t10000hobbyList2.contains(DataArray.t10000hobbyList.get(i))) {
+            for (int i = 0; i < DataArray.t10000hobbyList.size(); i++) {
+                if (!DataArray.t10000hobbyList2.contains(DataArray.t10000hobbyList.get(i))) {
                     DataArray.t10000hobbyList2.add(DataArray.t10000hobbyList.get(i));
                 }
             }
             // t10000 데이터 읽었다는 확인
             DataArray.t10000Read = true;
 
+
+
+
+
+
+
         }   /* 사람 500000명일 때 */
         else {
 
-            // 1번째 사람 기준 나중에 기준 모두 for문 돌리고 복사한 peopleList2 하나씩 지우기-ArryaList 인텐트 전송되나?
-            String firstPerson = DataArray.t500000peopleList.get(0).replaceAll(" ", "");             // 첫번째 사람 공백 제거
-            //Log.d("eeeeeeeeeeeeee111", firstPerson);
-            for (int i = 1; i < DataArray.t500000peopleList.size() ; i++) {
-                int matchCount = 0;                                                                      // 매칭 카운트
-                ArrayList<String> matchHobby = new ArrayList<>();                                        // 매칭 취미
+            for (int h = 0; h < DataArray.t500000peopleList.size(); h++) {
+                String standardPerson = DataArray.t500000peopleList.get(h).replaceAll(" ", "");             // 첫번째 사람 공백 제거
+                Log.d("aaaaaaaaaaaaa11", standardPerson);
 
-                for (int j = 0; j < 10; j++) {
-                    String a = String.valueOf(firstPerson.charAt(j));                                    // firstPerson j 번째 문자열
-                    //Log.d("eeeeeeeeeeeeee222", a);
-                    if (DataArray.t500000peopleList.get(i).contains(a)) {
-                        matchCount++;
-                        //Log.d("eeeeeeeeeeeeee333", matchCount+"");
-                        matchHobby.add(a);
-                    }
-                }
 
-                if (matchCount > maxMatchCount) {
-                    // 기록갱신
-                    maxMatchCount = matchCount;
-                    Log.d("eeeeeeeeeeeeee", "기존의 목록 갱신");
-                    // 기존의 커플목록, 취미목록 삭제
-                    DataArray.t500000hobbyList.clear();
-                    DataArray.t500000coupleList.clear();
-                    DataArray.t500000coupleList2.clear();
-                    // 신규 커플목록, 취미목록 등록
-                    // 알파벳 순으로 매칭 취미 정렬
-                    //matchHobby.sort(String::compareToIgnoreCase);
-                    Collections.sort(matchHobby);
-                    String matchHobbyString = "";
-                    for ( int k = 0; k < matchHobby.size(); k++) {
-                        matchHobbyString += matchHobby.get(k);
-                    }
-                    DataArray.t500000hobbyList.add(matchHobbyString);
-                    DataArray.t500000coupleList.add(1);
-                    DataArray.t500000coupleList2.add(i+1);
-                } else if (matchCount == maxMatchCount && matchCount != 0){
-                    // 기존의 커플목록, 취미목록에 추가
-                    // 알파벳 순으로 매칭 취미 정렬
-                    Log.d("eeeeeeeeeeeeee", "기존의 목록 추가");
-                    Collections.sort(matchHobby);
-                    String matchHobbyString = "";
-                    for ( int k = 0; k < matchHobby.size(); k++) {
-                        matchHobbyString += matchHobby.get(k);
-                    }
-                    DataArray.t500000hobbyList.add(matchHobbyString);
-                    DataArray.t500000coupleList.add(1);
-                    DataArray.t500000coupleList2.add(i+1);
+                for (int i = 1; i < DataArray.t500000peopleList.size(); i++) {
+                    if (h < i) {
 
+
+                        int matchCount = 0;                                                                      // 매칭 카운트
+                        ArrayList<String> matchHobby = new ArrayList<>();                                        // 매칭 취미
+                        matchHobby.clear();
+                        for (int j = 0; j < 10; j++) {
+                            String a = String.valueOf(standardPerson.charAt(j));                                    // firstPerson j 번째 문자열
+
+                            if (DataArray.t500000peopleList.get(i).contains(a)) {
+                                matchCount++;
+                                Log.d("aaaaaaaaaaaaa11", h+""+i+""+a);
+                                matchHobby.add(a);
+                            }
+                        }
+
+                        if (matchCount > maxMatchCount) {
+
+                            // 기록갱신
+                            maxMatchCount = matchCount;
+                            Log.d("aaaaaaaaaaaaa", "기존의 목록 갱신");
+
+                            // 기존의 커플목록, 취미목록 삭제
+                            DataArray.t500000hobbyList.clear();
+                            DataArray.t500000coupleList.clear();
+                            DataArray.t500000coupleList2.clear();
+
+                            // 신규 커플목록, 취미목록 등록
+                            // 알파벳 순으로 매칭 취미 정렬
+                            //matchHobby.sort(String::compareToIgnoreCase);
+                            Collections.sort(matchHobby);
+                            String matchHobbyString = "";
+                            for (int k = 0; k < matchHobby.size(); k++) {
+                                matchHobbyString += matchHobby.get(k);
+                            }
+                            DataArray.t500000hobbyList.add(matchHobbyString);
+                            DataArray.t500000coupleList.add(h +1);
+                            DataArray.t500000coupleList2.add(i + 1);
+
+
+                        } else if (matchCount == maxMatchCount && matchCount != 0) {
+                            // 기존의 커플목록, 취미목록에 추가
+                            // 알파벳 순으로 매칭 취미 정렬
+                            Collections.sort(matchHobby);
+                            String matchHobbyString = "";
+                            for (int k = 0; k < matchHobby.size(); k++) {
+                                matchHobbyString += matchHobby.get(k);
+                            }
+                            DataArray.t500000hobbyList.add(matchHobbyString);
+                            Log.d("aaaaaaaaaaaaaaa", matchHobbyString);
+                            Log.d("aaaaaaaaaaaaaaa", h+"   "+i);
+                            DataArray.t500000coupleList.add(h +1);
+                            DataArray.t500000coupleList2.add(i + 1);
+
+                        }
+                    }
                 }
             }
 
-            Collections.sort(DataArray.t500000hobbyList);                                                                 // 취미 리스트 알파벳 순으로 정렬
-            // 중복제거
-            for (int i = 0; i < DataArray.t500000hobbyList.size(); i++ ) {
-                if(!DataArray.t500000hobbyList2.contains(DataArray.t500000hobbyList.get(i))) {
+            // 중복제거 후 알파벳 순 정렬
+            for (int i = 0; i < DataArray.t500000hobbyList.size(); i++) {
+                if (!DataArray.t500000hobbyList2.contains(DataArray.t500000hobbyList.get(i))) {
                     DataArray.t500000hobbyList2.add(DataArray.t500000hobbyList.get(i));
                 }
             }
+            Collections.sort(DataArray.t500000hobbyList2);
             // t500000 데이터 읽었다는 확인
             DataArray.t500000Read = true;
         }
@@ -384,8 +392,8 @@ public class HobbyListActivity extends AppCompatActivity {
     /* 뒤로가기 버튼 */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{                                                                 // toolbar back 키 눌렀을 때 동작
+        switch (item.getItemId()) {
+            case android.R.id.home: {                                                                 // toolbar back 키 눌렀을 때 동작
                 finish();
                 return true;
             }
