@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 
 import com.jiyeonchoi.birdviewtest.Adapter.CoupleListRCAdabter;
 import com.jiyeonchoi.birdviewtest.Data_VO.CoupleListItem;
+import com.jiyeonchoi.birdviewtest.Data_VO.DataArray;
+import com.jiyeonchoi.birdviewtest.Data_VO.HobbyListItem;
 import com.jiyeonchoi.birdviewtest.databinding.ActivityCoupleListBinding;
 
 import java.util.ArrayList;
@@ -19,13 +22,10 @@ public class CoupleListActivity extends AppCompatActivity {
     /* 데이터바인딩 */
     private ActivityCoupleListBinding binding;
 
-    /* 데이터 파일 사람 수 */
-    int peopleCount;
-
     /* RecyclerView */
     CoupleListRCAdabter coupleListRCAdabter;
     ArrayList<CoupleListItem> coupleArray = new ArrayList<>();
-
+    String hobbyName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,19 +35,12 @@ public class CoupleListActivity extends AppCompatActivity {
 
         /* 툴바 수정 */
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);                                       // 뒤로가기 버튼 세팅
-        getSupportActionBar().setTitle(R.string.hobbyListTitle);                                      // 툴바 이름 세팅
+        getSupportActionBar().setTitle(R.string.coupleListTitle);                                    // 툴바 이름 세팅
 
-        /*데이터 수신*/
+        /* 데이터 수신 후 타이틀 변경 */
         Intent intent = getIntent();
-        peopleCount = intent.getExtras().getInt("peopleCount", 0);
-
-        if (peopleCount == 100) {
-            binding.peopleCount.setText(R.string.p100);
-        } else if (peopleCount == 10000) {
-            binding.peopleCount.setText(R.string.p10000);
-        } else {
-            binding.peopleCount.setText(R.string.p500000);
-        }
+        hobbyName = intent.getExtras().getString("hobby", "");
+        binding.hobby.setText(hobbyName);
 
         /* RecyclerView */
         coupleListRCAdabter = new CoupleListRCAdabter(this, coupleArray);
@@ -56,7 +49,55 @@ public class CoupleListActivity extends AppCompatActivity {
 
 
 
+        /* test 잘불러와지나 확인!! */
+        coupleRCSave();
+
+
     }   // onCreate 끝
+
+
+
+    public void coupleRCSave() {
+
+        /* 사람 100명일 때 */
+        if ( DataArray.peopleCount == 100 ) {
+
+            for (int i = 0; i< DataArray.t100hobbyList.size(); i++) {
+                if( DataArray.t100hobbyList.get(i).equals(hobbyName)) {
+                    coupleArray.add(new CoupleListItem(DataArray.t100coupleList.get(i) + " - " + DataArray.t100coupleList2.get(i),
+                                                        DataArray.t100peopleList.get(DataArray.t100coupleList.get(i)-1), DataArray.t100peopleList.get(DataArray.t100coupleList2.get(i)-1)));
+                }
+            }
+            coupleListRCAdabter.notifyDataSetChanged();
+
+        } /* 사람 10000명일 때 */
+        else if ( DataArray.peopleCount == 10000) {
+
+            for (int i = 0; i< DataArray.t10000hobbyList.size(); i++) {
+                if( DataArray.t10000hobbyList.get(i).equals(hobbyName)) {
+                    coupleArray.add(new CoupleListItem(DataArray.t10000coupleList.get(i) + " - " + DataArray.t10000coupleList2.get(i),
+                            DataArray.t10000peopleList.get(DataArray.t10000coupleList.get(i)-1), DataArray.t10000peopleList.get(DataArray.t10000coupleList2.get(i)-1)));
+                }
+            }
+            coupleListRCAdabter.notifyDataSetChanged();
+
+        } /* 사람 500000명일 때 */
+        else {
+
+            for (int i = 0; i< DataArray.t500000hobbyList.size(); i++) {
+                if( DataArray.t500000hobbyList.get(i).equals(hobbyName)) {
+                    coupleArray.add(new CoupleListItem(DataArray.t500000coupleList.get(i) + " - " + DataArray.t500000coupleList2.get(i),
+                            DataArray.t500000peopleList.get(DataArray.t500000coupleList.get(i)-1), DataArray.t500000peopleList.get(DataArray.t500000coupleList2.get(i)-1)));
+                }
+            }
+            coupleListRCAdabter.notifyDataSetChanged();
+
+        }
+    }
+
+
+
+
 
 
 

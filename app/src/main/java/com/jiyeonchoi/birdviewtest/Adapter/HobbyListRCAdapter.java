@@ -1,12 +1,17 @@
 package com.jiyeonchoi.birdviewtest.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.jiyeonchoi.birdviewtest.CoupleListActivity;
 import com.jiyeonchoi.birdviewtest.Data_VO.HobbyListItem;
+import com.jiyeonchoi.birdviewtest.HobbyListActivity;
 import com.jiyeonchoi.birdviewtest.R;
 import java.util.ArrayList;
 
@@ -37,6 +42,12 @@ public class HobbyListRCAdapter extends RecyclerView.Adapter<HobbyListRCAdapter.
 
         holder.hobby.setText(item.getHobby());
 
+        holder.itemView.setOnClickListener( v ->
+        {
+            Intent go_couple_list = new Intent(context.getApplicationContext(), CoupleListActivity.class);
+            go_couple_list.putExtra("hobby", item.getHobby());
+            context.startActivity(go_couple_list);
+        });
     }
 
     @Override
