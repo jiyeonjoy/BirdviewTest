@@ -91,8 +91,6 @@ public class HobbyListActivity extends AppCompatActivity {
         }
 
 
-
-
         /* test 잘불러와지나 확인!! */
         hobbyRCSave();
 
@@ -151,7 +149,7 @@ public class HobbyListActivity extends AppCompatActivity {
         /* 사람 100명일 때 */
         if (DataArray.peopleCount == 100) {
 
-            for (int h = 0; h < 100; h++) {
+            for (int h = 0; h < DataArray.t100peopleList.size(); h++) {
 
                 String standardPerson = DataArray.t100peopleList.get(h).replaceAll(" ", "");             // 첫번째 사람 공백 제거
                 for (int i = 0; i < DataArray.t100peopleList.size(); i++) {
@@ -206,7 +204,7 @@ public class HobbyListActivity extends AppCompatActivity {
                 }
             }
 
-            // 중복제거 후 알파벳 순 정력
+            // 중복제거 후 알파벳 순 정렬
             for (int i = 0; i < DataArray.t100hobbyList.size(); i++) {
                 if (!DataArray.t100hobbyList2.contains(DataArray.t100hobbyList.get(i))) {
                     DataArray.t100hobbyList2.add(DataArray.t100hobbyList.get(i));
@@ -217,11 +215,12 @@ public class HobbyListActivity extends AppCompatActivity {
             DataArray.t100Read = true;
 
 
-        }   /* 사람 10000명일 때 */ else if (DataArray.peopleCount == 10000) {
+        }   /* 사람 10000명일 때 */
+        else if (DataArray.peopleCount == 10000) {
 
             for (int h = 0; h < DataArray.t10000peopleList.size(); h++) {
                 String standardPerson = DataArray.t10000peopleList.get(h).replaceAll(" ", "");             // 첫번째 사람 공백 제거
-
+                Log.d("aaaaaaaaaaaaaaaaaaa", h+"");
                 for (int i = 1; i < DataArray.t10000peopleList.size(); i++) {
                     if (h < i) {
 
@@ -260,8 +259,8 @@ public class HobbyListActivity extends AppCompatActivity {
                             // 알파벳 순으로 매칭 취미 정렬
                             Collections.sort(matchHobby);
                             String matchHobbyString = "";
-                            for (int k = 0; k < matchHobby.size(); k++) {
-                                matchHobbyString += matchHobby.get(k);
+                            for (int l = 0; l < matchHobby.size(); l++) {
+                                matchHobbyString += matchHobby.get(l);
                             }
                             DataArray.t10000hobbyList.add(matchHobbyString);
                             DataArray.t10000coupleList.add(h + 1);
@@ -281,8 +280,8 @@ public class HobbyListActivity extends AppCompatActivity {
             // t10000 데이터 읽었다는 확인
             DataArray.t10000Read = true;
 
-
-        }   /* 사람 500000명일 때 */ else {
+        }   /* 사람 500000명일 때 */
+        else {
 
             for (int h = 0; h < DataArray.t500000peopleList.size(); h++) {
                 String standardPerson = DataArray.t500000peopleList.get(h).replaceAll(" ", "");             // 첫번째 사람 공백 제거
@@ -333,8 +332,8 @@ public class HobbyListActivity extends AppCompatActivity {
                             // 알파벳 순으로 매칭 취미 정렬
                             Collections.sort(matchHobby);
                             String matchHobbyString = "";
-                            for (int k = 0; k < matchHobby.size(); k++) {
-                                matchHobbyString += matchHobby.get(k);
+                            for (int l = 0; l < matchHobby.size(); l++) {
+                                matchHobbyString += matchHobby.get(l);
                             }
                             DataArray.t500000hobbyList.add(matchHobbyString);
                             DataArray.t500000coupleList.add(h + 1);
@@ -380,6 +379,11 @@ public class HobbyListActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+
     /* 뒤로가기 버튼 */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -391,4 +395,18 @@ public class HobbyListActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+//    private class ExampleThread extends Thread {
+//        private static final String TAG = "ExampleThread";
+//
+//        public ExampleThread() {
+//            // 초기화 작업
+//            hobbyCompare();
+//        }
+//        public void run() {
+//            // 스레드에게 수행시킬 동작들 구현
+//        }
+//    }
 }
