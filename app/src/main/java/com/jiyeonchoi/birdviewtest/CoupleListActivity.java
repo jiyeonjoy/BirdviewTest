@@ -90,36 +90,12 @@ public class CoupleListActivity extends AppCompatActivity {
                     Log.d("aaaaaaaaaaaaaaa55", hobbyName);
                     coupleArray.add(new CoupleListItem(DataArray.t500000coupleList.get(i) + " - " + DataArray.t500000coupleList2.get(i),
                             DataArray.t500000peopleList.get(DataArray.t500000coupleList.get(i)-1), DataArray.t500000peopleList.get(DataArray.t500000coupleList2.get(i)-1)));
-                    Log.d("aaaaaaaaaaaaaaa55", DataArray.t500000coupleList.get(i)+"");
-                    Log.d("aaaaaaaaaaaaaaa55", DataArray.t500000coupleList2.get(i)+"");
                 }
             }
             coupleListRCAdabter.notifyDataSetChanged();
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /* 뒤로가기 버튼 */
