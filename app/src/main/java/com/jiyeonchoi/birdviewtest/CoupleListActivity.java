@@ -19,7 +19,6 @@ public class CoupleListActivity extends AppCompatActivity {
     /* 데이터바인딩 */
     private ActivityCoupleListBinding binding;
 
-
     /* 데이터 파일 사람 수 */
     int peopleCount;
 
@@ -28,17 +27,15 @@ public class CoupleListActivity extends AppCompatActivity {
     ArrayList<CoupleListItem> coupleArray = new ArrayList<>();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_couple_list);
         binding.setCoupleList(this);
 
-
         /* 툴바 수정 */
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);                                       // 뒤로가기 버튼 세팅
-        getSupportActionBar().setTitle(R.string.hobbyListTitle);                                     // 툴바 이름 세팅
+        getSupportActionBar().setTitle(R.string.hobbyListTitle);                                      // 툴바 이름 세팅
 
         /*데이터 수신*/
         Intent intent = getIntent();
@@ -56,8 +53,6 @@ public class CoupleListActivity extends AppCompatActivity {
         coupleListRCAdabter = new CoupleListRCAdabter(this, coupleArray);
         binding.coupleListRc.setAdapter(coupleListRCAdabter);
         binding.coupleListRc.setLayoutManager(new LinearLayoutManager(this));
-
-
 
 
 
