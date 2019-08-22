@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -152,8 +153,7 @@ public class HobbyListActivity extends AppCompatActivity {
             for (int h = 0; h < DataArray.t100peopleList.size(); h++) {
 
                 String standardPerson = DataArray.t100peopleList.get(h).replaceAll(" ", "");             // 첫번째 사람 공백 제거
-                for (int i = 0; i < DataArray.t100peopleList.size(); i++) {
-                    if (h < i) {
+                for (int i = h+1; i < DataArray.t100peopleList.size(); i++) {
                         int matchCount = 0;                                                                      // 매칭 카운트
                         ArrayList<String> matchHobby = new ArrayList<>();                                        // 매칭 취미
                         matchHobby.clear();
@@ -200,7 +200,7 @@ public class HobbyListActivity extends AppCompatActivity {
                             DataArray.t100coupleList.add(h + 1);
                             DataArray.t100coupleList2.add(i + 1);
                         }
-                    }
+
                 }
             }
 
@@ -217,12 +217,11 @@ public class HobbyListActivity extends AppCompatActivity {
 
         }   /* 사람 10000명일 때 */
         else if (DataArray.peopleCount == 10000) {
-
+            //ProgressDialog dialog = ProgressDialog.show(HobbyListActivity.this, "Loading", "Please wait...", true);
             for (int h = 0; h < DataArray.t10000peopleList.size(); h++) {
                 String standardPerson = DataArray.t10000peopleList.get(h).replaceAll(" ", "");             // 첫번째 사람 공백 제거
                 Log.d("aaaaaaaaaaaaaaaaaaa", h+"");
-                for (int i = 1; i < DataArray.t10000peopleList.size(); i++) {
-                    if (h < i) {
+                for (int i = h+1; i < DataArray.t10000peopleList.size(); i++) {
 
                         int matchCount = 0;                                                                      // 매칭 카운트
                         ArrayList<String> matchHobby = new ArrayList<>();                                        // 매칭 취미
@@ -267,7 +266,6 @@ public class HobbyListActivity extends AppCompatActivity {
                             DataArray.t10000coupleList2.add(i + 1);
 
                         }
-                    }
                 }
             }
             // 중복제거 후 알파벳 순 정렬
@@ -279,7 +277,7 @@ public class HobbyListActivity extends AppCompatActivity {
             Collections.sort(DataArray.t10000hobbyList2);
             // t10000 데이터 읽었다는 확인
             DataArray.t10000Read = true;
-
+            //dialog.dismiss ();
         }   /* 사람 500000명일 때 */
         else {
 
@@ -288,9 +286,7 @@ public class HobbyListActivity extends AppCompatActivity {
 
 
 
-                for (int i = 1; i < DataArray.t500000peopleList.size(); i++) {
-                    if (h < i) {
-
+                for (int i = h+1; i < DataArray.t500000peopleList.size(); i++) {
 
                         int matchCount = 0;                                                                      // 매칭 카운트
                         ArrayList<String> matchHobby = new ArrayList<>();                                        // 매칭 취미
@@ -340,7 +336,7 @@ public class HobbyListActivity extends AppCompatActivity {
                             DataArray.t500000coupleList2.add(i + 1);
 
                         }
-                    }
+
                 }
             }
 
