@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="A B C D E"
+            android:text="ABCDE"
             android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/FirstColor"
