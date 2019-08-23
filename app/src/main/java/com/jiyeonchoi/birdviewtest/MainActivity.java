@@ -62,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
         binding.text500000.setOnClickListener(v -> {
             if (!DataArray.t500000Read) {
-                // new ProgressTask().execute();     // 프로그레스바 시도했으나 너무 오래걸려서 포기
+                // new ProgressTask().execute();     // 프로그레스바 이용한 방법! - 시도했으나 너무 오래걸려서 포기
                 /* 파일 읽기 */
-                readTxt(10000);
+                readTxt(500000);
                 /* 취미 비교 */
-                hobbyCompare(10000); // 첫 번째 방법
-                //hobbyCompareBigData(10000);  // 두 번째 방법
+                //hobbyCompare(500000); // 첫 번째 방법
+                hobbyCompareBigData(500000);  // 두 번째 방법 - 혹시 앱이 죽거든 프로그레스바 이용한 방법으로 부탁드립니다!
             } else {
                 goHobbyListIntent();
             }
