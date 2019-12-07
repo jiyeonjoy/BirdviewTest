@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
-
+// 깃허브에서 바로 
     /* 데이터바인딩 */
     private ActivityMainBinding binding;
 
