@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jiyeonchoi.birdviewtest.Data_VO.CoupleListItem;
 import com.jiyeonchoi.birdviewtest.R;
 import java.util.ArrayList;
-
+// test
 public class CoupleListRCAdabter extends RecyclerView.Adapter<CoupleListRCAdabter.ViewHolder> {
     Context context;
     ArrayList<CoupleListItem> items;
