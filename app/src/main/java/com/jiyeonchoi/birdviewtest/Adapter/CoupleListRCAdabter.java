@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class CoupleListRCAdabter extends RecyclerView.Adapter<CoupleListRCAdabter.ViewHolder> {
     Context context;
     ArrayList<CoupleListItem> items;
-
+    // test
     public CoupleListRCAdabter(Context context, ArrayList<CoupleListItem> items) {
         this.context = context;
         this.items = items;
