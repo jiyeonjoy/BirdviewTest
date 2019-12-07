@@ -23,6 +23,7 @@ public class CoupleListActivity extends AppCompatActivity {
     /* 데이터바인딩 */
     private ActivityCoupleListBinding binding;
 
+    //
     /* RecyclerView */
     CoupleListRCAdabter coupleListRCAdabter;
     ArrayList<CoupleListItem> coupleArray = new ArrayList<>();
