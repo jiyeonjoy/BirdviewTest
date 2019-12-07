@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     /* 데이터 파일 읽기 */
     InputStream inputStream;
-
+    // 로컬 수정 ........
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
