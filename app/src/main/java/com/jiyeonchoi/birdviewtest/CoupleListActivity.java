@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class CoupleListActivity extends AppCompatActivity {
 
+    // tes222222222222
     /* 데이터바인딩 */
     private ActivityCoupleListBinding binding;
 
